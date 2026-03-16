@@ -26,3 +26,10 @@ ggplot(data = week7_tbl, mapping = aes(x = timeStart, y = q1)) +
   geom_point() + 
   labs(x = "Date of Experiment", y = "Q1 Score")
 ggsave(filename = "../figs/fig1.png", height = 5, width = 8, units = "in", dpi = 600)
+
+
+ggplot(data = week7_tbl, mapping = aes(x = q1, y = q2, color = gender)) + 
+  geom_point() +
+  geom_jitter() +
+  labs(color = "Participant Gender")
+ggsave("../figs/fig2.png", height = 3, width = 5, units = "in", dpi = 600)
