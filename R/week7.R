@@ -2,7 +2,7 @@
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(tidyverse)
 library(GGally)
-
+library(ggplot2)
 
 
 # Data Import and Cleaning
@@ -21,3 +21,8 @@ week7_tbl <- read_csv("../data/week3.csv", col_names = TRUE, col_types = cols(ti
 # Visualization
 ggpairs(data = week7_tbl, columns = 5:13, lower = list(continuous = "points"), upper = list(continuous = "cor"), diag = list(continuous = "densityDiag")) %>%
 ggsave(filename = "../figs/scatter_corr_mat.png", plot = .)
+
+ggplot(data = week7_tbl, mapping = aes(x = timeStart, y = q1)) + 
+  geom_point() + 
+  labs(x = "Date of Experiment", y = "Q1 Score")
+ggsave(filename = "../figs/fig1.png", height = 5, width = 8, units = "in", dpi = 600)
