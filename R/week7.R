@@ -2,7 +2,7 @@
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(tidyverse)
 library(GGally)
-library(ggplot2)
+
 
 
 # Data Import and Cleaning
@@ -44,3 +44,11 @@ ggplot(data = week7_tbl, mapping = aes(x = gender, y = timeSpent)) +
   geom_boxplot() +
   labs(x = "Gender", y = "Time Elapsed (mins)")
 ggsave("../figs/fig4.png", height = 3, width = 5, units = "in", dpi = 600)
+
+
+ggplot(data = week7_tbl, mapping = aes(x = q5, y = q7, color = condition)) + 
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_jitter() +
+  theme(legend.position = "bottom", legend.background = element_rect(fill = gray(0.875))) +
+  labs(color = "Experimental Condition", x = "Score on Q5", y = "Score on Q7")
+ggsave("../figs/fig5.png", height = 4, width = 8, units = "in", dpi = 600)
