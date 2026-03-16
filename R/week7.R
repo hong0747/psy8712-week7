@@ -1,7 +1,7 @@
 # Script Settings and Resources
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(tidyverse)
-
+library(GGally)
 
 
 
@@ -19,3 +19,5 @@ week7_tbl <- read_csv("../data/week3.csv", col_names = TRUE, col_types = cols(ti
 
 
 # Visualization
+ggpairs(data = week7_tbl, columns = 5:13, lower = list(continuous = "points"), upper = list(continuous = "cor"), diag = list(continuous = "densityDiag")) %>%
+ggsave(filename = "../figs/scatter_corr_mat.png", plot = .)
