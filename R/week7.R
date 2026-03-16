@@ -33,3 +33,9 @@ ggplot(data = week7_tbl, mapping = aes(x = q1, y = q2, color = gender)) +
   geom_jitter() +
   labs(color = "Participant Gender")
 ggsave("../figs/fig2.png", height = 3, width = 5, units = "in", dpi = 600)
+ggplot(data = week7_tbl, mapping = aes(x = q1, y = q2)) +
+  geom_point() +
+  geom_jitter() +
+  labs(x = "Score on Q1", y = "Score on Q2") +
+  facet_grid(cols = vars(gender))
+ggsave("../figs/fig3.png", height = 4, width = 8.5, units = "in", dpi = 600)
